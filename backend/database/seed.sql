@@ -44,3 +44,10 @@ WHERE NOT EXISTS (
       AND i.issue_date = v.issue_date
       AND i.amount = v.amount
 );
+-- Sample team members
+INSERT INTO team_members (name, email, joined_date, role)
+VALUES
+    ('Govind Lal T L', 'your-email@example.com', '2026-10-31', 'admin'),
+    ('Rahul Menon', 'rahul@example.com', '2026-10-31', 'staff'),
+    ('Meera Thomas', 'meera@example.com', '2026-10-31', 'staff')
+ON CONFLICT (email) DO NOTHING;
