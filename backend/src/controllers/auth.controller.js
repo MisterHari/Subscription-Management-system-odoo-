@@ -1,6 +1,10 @@
 const pool = require("../config/database");
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const {
+    hashPassword,
+    verifyPassword
+} = require("../utils/password");
 const asyncHandler = require("../utils/async-handler");
 
 function generateToken(userId, role) {
@@ -50,7 +54,7 @@ exports.signup = asyncHandler(async (req, res) => {
         });
     }
 
-    const passwordHash = await bcrypt.hash(password, 12);
+const passwordHash = await hashPassword(password);
 
     const result = await pool.query(`
         INSERT INTO customers (
@@ -125,9 +129,9 @@ exports.login = asyncHandler(async (req, res) => {
         });
     }
 
-    const validPassword = await bcrypt.compare(
-        password,
-        user.password_hash
+    const validPassword = await verifyPassword(
+        user.password_hash,
+        password
     );
 
     if (!validPassword) {
@@ -228,7 +232,7 @@ exports.createStaff = asyncHandler(async (req, res) => {
         });
     }
 
-    const passwordHash = await bcrypt.hash(password, 12);
+const passwordHash = await hashPassword(password);
 
     const result = await pool.query(`
         INSERT INTO team_members (name, email, password_hash, role)

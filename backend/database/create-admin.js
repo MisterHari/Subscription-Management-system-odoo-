@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const pool = require("../src/config/database");
-const bcrypt = require("bcryptjs");
+const argon2 = require("argon2");
 
 async function createAdmin() {
     try {
@@ -27,7 +27,7 @@ async function createAdmin() {
             throw new Error("This email already exists");
         }
 
-        const hash = await bcrypt.hash(password, 12);
+        const passwordHash = await hashPassword(password);
 
         await pool.query(`
             INSERT INTO team_members (
