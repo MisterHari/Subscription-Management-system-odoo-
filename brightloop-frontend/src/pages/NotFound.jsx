@@ -1,0 +1,1 @@
+import {Link} from 'react-router-dom';export default function NotFound(){return <div className="not-found"><h1>Lost in space?</h1><Link to="/">Return to dashboard</Link></div>}

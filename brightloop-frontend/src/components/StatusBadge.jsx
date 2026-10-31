@@ -1,0 +1,1 @@
+export default function StatusBadge({value}){const v=String(value||'unknown').toLowerCase();return <span className={'status '+(v==='active'||v==='paid'?'good':v==='pending'||v==='trial'?'pending':'muted')}><i/>{value||'Unknown'}</span>}

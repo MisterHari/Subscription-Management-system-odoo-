@@ -1,0 +1,2 @@
+import ResourcePage from '../components/ResourcePage';
+export default function Customers(){return <ResourcePage resource="customers" title="People behind the payments" description="Keep every customer relationship in view." columns={[['name','Customer'],['email','Email'],['status','Status']]} fields={[['name','Name'],['email','Email']]}/>;}

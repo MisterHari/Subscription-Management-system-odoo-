@@ -1,0 +1,2 @@
+import ResourcePage from '../components/ResourcePage';
+export default function Invoices(){return <ResourcePage resource="invoices" title="Every payment, accounted for" description="A single home for your billing history." columns={[['invoice_number','Invoice'],['customer_name','Customer'],['amount','Amount'],['status','Status'],['due_date','Due date']]} fields={[['customer_id','Customer ID'],['amount','Amount'],['due_date','Due date']]}/>;}

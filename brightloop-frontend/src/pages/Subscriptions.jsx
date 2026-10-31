@@ -1,0 +1,2 @@
+import ResourcePage from '../components/ResourcePage';
+export default function Subscriptions(){return <ResourcePage resource="subscriptions" title="Your recurring universe" description="See which plans are powering your business." columns={[['customer_name','Customer'],['plan_name','Plan'],['amount','Amount'],['status','Status']]} fields={[['customer_id','Customer ID'],['plan_name','Plan name'],['amount','Amount']]}/>;}
