@@ -163,19 +163,45 @@ With fallback enabled, the frontend can show demo data if the API is unavailable
 
 ```text
 brightloop/
-├── README.md
-├── subscriptly_prism_pulse.html    # Current single-file frontend
-├── backend/                       # To be implemented
-│   ├── server.js
-│   ├── db.js
-│   ├── routes/
-│   │   ├── customers.js
-│   │   ├── subscriptions.js
-│   │   └── invoices.js
-│   ├── schema.sql
-│   ├── package.json
-│   └── .env                        # Local only; do not commit
-└── .gitignore
+│
+├── subscriptly_prism_pulse.html # to be changed
+│
+├── backend/
+│   │
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── database.js
+│   │   │
+│   │   ├── controllers/
+│   │   │   ├── customer.controller.js
+│   │   │   ├── subscription.controller.js
+│   │   │   └── invoice.controller.js
+│   │   │
+│   │   ├── routes/
+│   │   │   ├── customer.routes.js
+│   │   │   ├── subscription.routes.js
+│   │   │   └── invoice.routes.js
+│   │   │
+│   │   ├── middleware/
+│   │   │   ├── error.middleware.js
+│   │   │   └── not-found.middleware.js
+│   │   │
+│   │   ├── utils/
+│   │   │   └── async-handler.js
+│   │   │
+│   │   ├── app.js
+│   │   └── server.js
+│   │
+│   ├── database/
+│   │   ├── schema.sql
+│   │   └── seed.sql
+│   │
+│   ├── .env
+│   ├── .env.example
+│   ├── .gitignore
+│   └── package.json
+│
+└── README.md
 ```
 
 ## Three-person MVP to-do list
