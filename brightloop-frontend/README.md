@@ -174,3 +174,10 @@ Admin Product editor supports multiple named brand variants and their price adju
 ## v14 — Sign-in page introduction
 
 The sign-in page now introduces Brightloop as a subscription management platform, highlighting subscription management, recurring billing, and financial visibility. The existing authentication context, login submission, role-aware navigation, signup, and password reset flows remain in place. Demo credentials are not shown on the page.
+
+## v15 changes
+- Customer marketplace: Explore & Buy shows admin-created products and available plans.
+- Buy Now immediately creates an Active subscription in demo mode, stored in browser localStorage and visible under My Subscriptions. No payment is collected.
+- Password visibility toggle on login, signup, and reset-password fields.
+- Login wording updated.
+- API mode purchasing is intentionally disabled until a secure backend checkout/purchase endpoint exists.
