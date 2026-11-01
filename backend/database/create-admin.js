@@ -1,13 +1,20 @@
-require("dotenv").config();
+require("dotenv").config({
+    path: require("path").resolve(__dirname, "../.env")
+});
+
+const {
+    hashPassword,
+} = require("../src/utils/password");
 
 const pool = require("../src/config/database");
-const argon2 = require("argon2");
 
 async function createAdmin() {
     try {
+
         const name = process.env.ADMIN_NAME;
         const email = process.env.ADMIN_EMAIL?.toLowerCase();
         const password = process.env.ADMIN_PASSWORD;
+
 
         if (!name || !email || !password) {
             throw new Error("Missing admin environment variables");
@@ -27,7 +34,8 @@ async function createAdmin() {
             throw new Error("This email already exists");
         }
 
-        const passwordHash = await hashPassword(password);
+        const hash = await hashPassword(password);
+        console.log(hash);
 
         await pool.query(`
             INSERT INTO team_members (
@@ -36,7 +44,6 @@ async function createAdmin() {
             VALUES ($1, $2, $3, 'admin')
         `, [name, email, hash]);
 
-        console.log("Admin account created successfully");
 
     } catch (error) {
         console.error(error.message);
